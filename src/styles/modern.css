@@ -1,0 +1,310 @@
+/* =========================================================================
+   modern.css — the clean skin. Applies only under [data-theme="modern"].
+   Same layout/grid as retro (structure lives in base.css). An editorial /
+   print aesthetic: warm paper, serif display headings, a rust accent, and
+   monospace meta. Deliberately NOT the generic rounded-pill "AI" look.
+   ========================================================================= */
+
+[data-theme='modern'] {
+  --bg: #f3efe6;
+  --fg: #1c1b18;
+  --accent: #b1442a;
+  --muted: #6f6a5f;
+  --rule: #ddd6c7;
+  --font-body:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-head:
+    'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia,
+    'Times New Roman', serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+[data-theme='modern'] body {
+  background: var(--bg);
+  padding-bottom: var(--space-4);
+}
+
+/* Size the content column to a readable measure and center the sidebar+content
+   pair, so margins are balanced instead of leaving dead space on the right. */
+[data-theme='modern'] .frame {
+  grid-template-columns: var(--sidebar-w) minmax(0, 62ch);
+  justify-content: center;
+}
+
+/* Collapse to a single column on narrow screens (this override out-specifies
+   the base collapse rule, so it needs its own breakpoint). */
+@media (max-width: 760px) {
+  [data-theme='modern'] .frame {
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+  }
+}
+
+/* ---- Top bar ---- */
+[data-theme='modern'] .topbar {
+  background: rgba(243, 239, 230, 0.88);
+  backdrop-filter: saturate(1.1) blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+[data-theme='modern'] .topbar__blurb {
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Garish 1990s portal button (previews its destination). */
+[data-theme='modern'] .topbar__toggle {
+  background: #ff00ff;
+  color: #ffff00;
+  border: 4px outset #00ffff;
+  border-radius: 0;
+  font-family: 'Impact', 'Haettenschweiler', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 #000;
+}
+[data-theme='modern'] .topbar__toggle-retro {
+  display: none;
+}
+[data-theme='modern'] .topbar__toggle-modern {
+  display: inline;
+}
+
+/* ---- Header band → editorial masthead. Reset the WordArt. ---- */
+[data-theme='modern'] .siteheader {
+  padding: var(--space-5) var(--space-3) var(--space-3);
+  border-bottom: 2px solid var(--fg);
+  max-width: var(--frame-width);
+  margin: 0 auto;
+}
+[data-theme='modern'] .siteheader__name {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  color: var(--fg);
+  -webkit-text-fill-color: var(--fg);
+  -webkit-text-stroke: 0;
+  filter: none;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  letter-spacing: -0.01em;
+}
+[data-theme='modern'] .siteheader__tagline {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+[data-theme='modern'] .siteheader__chrome {
+  display: none;
+}
+
+/* ---- Sidebar nav (mono index) ---- */
+[data-theme='modern'] .nav__title {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+[data-theme='modern'] .nav__list {
+  gap: 0;
+}
+[data-theme='modern'] .nav__link {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+  border-left: 2px solid transparent;
+  border-radius: 0;
+  padding: var(--space-1) var(--space-2);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+[data-theme='modern'] .nav__link:hover {
+  color: var(--fg);
+}
+[data-theme='modern'] .nav__link--active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+[data-theme='modern'] .nav__pointer,
+[data-theme='modern'] .nav__youarehere {
+  display: none;
+}
+
+/* ---- Sections: numbered, serif, hairline-led ---- */
+[data-theme='modern'] .content {
+  counter-reset: section;
+  /* Width is governed by the grid column above. */
+  max-width: none;
+}
+[data-theme='modern'] .section__heading {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  color: var(--fg);
+  -webkit-text-fill-color: var(--fg);
+  -webkit-text-stroke: 0;
+  filter: none;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-align: left;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  border-top: 2px solid var(--fg);
+  padding-top: var(--space-2);
+}
+[data-theme='modern'] .section__heading::before {
+  counter-increment: section;
+  content: counter(section, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+/* ---- Hero / about ---- */
+[data-theme='modern'] .section--hero {
+  text-align: left;
+}
+/* The masthead's bottom rule already divides the header, so the first section
+   heading doesn't need its own top rule (avoids a double divide above About). */
+[data-theme='modern'] .section--hero .section__heading {
+  border-top: 0;
+  padding-top: 0;
+}
+[data-theme='modern'] .hero__location {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+[data-theme='modern'] .hero__summary {
+  margin-left: 0;
+  font-size: 1.05rem;
+  max-width: 60ch;
+}
+[data-theme='modern'] .hero__emailme {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  margin-bottom: var(--space-1);
+}
+[data-theme='modern'] .hero__skills-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  margin: var(--space-3) 0 var(--space-1);
+}
+
+/* Links: editorial text links, not pills */
+[data-theme='modern'] .links__list {
+  justify-content: flex-start;
+}
+[data-theme='modern'] .links__anchor {
+  padding: 0 var(--space-3) 0 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+[data-theme='modern'] .links__anchor:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* Skills as a tech-sheet, not pills */
+[data-theme='modern'] .skillwall {
+  justify-content: flex-start;
+}
+[data-theme='modern'] .skillwall__chip {
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  background: transparent;
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+
+/* Entries: hairline-separated, mono dates */
+[data-theme='modern'] .entry {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  padding: var(--space-3) 0 0;
+}
+[data-theme='modern'] .entry-list {
+  gap: var(--space-3);
+}
+[data-theme='modern'] .entry__title {
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+}
+[data-theme='modern'] .entry__org {
+  font-weight: 600;
+}
+[data-theme='modern'] .entry__role {
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+[data-theme='modern'] .entry__meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+
+[data-theme='modern'] .life__body {
+  font-size: 1.02rem;
+}
+
+/* ---- Hide all the 90s ephemera in modern ---- */
+[data-theme='modern'] .marquee,
+[data-theme='modern'] .sprites,
+[data-theme='modern'] .construction,
+[data-theme='modern'] .badgewall,
+[data-theme='modern'] .webring,
+[data-theme='modern'] .guestbook,
+[data-theme='modern'] .hitcounter,
+[data-theme='modern'] .midi,
+[data-theme='modern'] .signin,
+[data-theme='modern'] .poweredby,
+[data-theme='modern'] .divider,
+[data-theme='modern'] .statusbar,
+[data-theme='modern'] .hero__envelope,
+[data-theme='modern'] .hero__blink {
+  display: none;
+}
+
+/* Footer: one quiet line. */
+[data-theme='modern'] .footer {
+  align-items: flex-start;
+  text-align: left;
+  border-top: 1px solid var(--rule);
+  margin-top: var(--space-5);
+}
+[data-theme='modern'] .footer__sig {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}

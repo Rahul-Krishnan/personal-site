@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" data-theme="modern">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Rahul Krishnan — engineer, ex-derivatives trader, now building frontier AI tooling. A personal homepage with a 90s soul and a modern toggle."
+    />
+    <title>Rahul Krishnan :: My Corner of the Web</title>
+    <!--
+      FOUC guard: apply the saved theme before first paint so the page never
+      flashes the default theme. Runs synchronously in <head>, ahead of React.
+    -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('site-theme');
+          if (saved === '90s' || saved === 'modern') {
+            document.documentElement.dataset.theme = saved;
+          }
+        } catch (e) {
+          /* storage unavailable: keep the static default (modern) */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

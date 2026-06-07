@@ -1,0 +1,433 @@
+/* =========================================================================
+   base.css — STRUCTURE ONLY. Shared by both themes.
+   Owns layout, spacing, and flow so the two skins share an identical layout.
+   Colors, fonts, borders, and decoration live in retro.css / modern.css.
+   Layout model: fixed top bar + header band + [sticky sidebar | content well]
+   + fixed status bar ("fake frames").
+   ========================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --topbar-h: 52px;
+  --statusbar-h: 28px;
+  --sidebar-w: 210px;
+  --frame-width: 1040px;
+
+  --space-1: 0.4rem;
+  --space-2: 0.8rem;
+  --space-3: 1.2rem;
+  --space-4: 2rem;
+  --space-5: 3.2rem;
+
+  /* Theme hooks (overridden by themes). Neutral fallbacks. */
+  --bg: #ffffff;
+  --fg: #111111;
+  --accent: #2563eb;
+  --muted: #666666;
+  --font-body: system-ui, sans-serif;
+  --font-head: system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  padding-top: var(--topbar-h);
+  padding-bottom: var(--statusbar-h);
+}
+
+/* ---- Fixed top bar (holds the toggle) ---- */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--topbar-h);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 0 var(--space-3);
+}
+
+.topbar__blurb {
+  font-size: 0.85rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.topbar__toggle {
+  cursor: pointer;
+  flex: none;
+  padding: var(--space-1) var(--space-3);
+  font-family: var(--font-head);
+}
+
+.topbar__toggle-modern {
+  display: none;
+}
+
+/* Mirror the right-hand arrow pair so both ends are pixel-identical width. */
+.topbar__arrows {
+  display: inline-block;
+}
+.topbar__arrows--flip {
+  transform: scaleX(-1);
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Header band ---- */
+.siteheader {
+  text-align: center;
+  padding: var(--space-4) var(--space-3) var(--space-3);
+}
+
+.siteheader__name {
+  margin: var(--space-2) 0;
+  font-size: 3.2rem;
+  line-height: 1.05;
+}
+
+.siteheader__tagline {
+  margin: 0 auto var(--space-2);
+  max-width: 60ch;
+}
+
+.siteheader__chrome {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: 0.8rem;
+}
+
+/* ---- The "frame": sidebar + content ---- */
+.frame {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  gap: var(--space-4);
+  max-width: var(--frame-width);
+  margin: 0 auto;
+  padding: 0 var(--space-3) var(--space-5);
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: calc(var(--topbar-h) + var(--space-2));
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.sidebar__ornaments {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.content {
+  min-width: 0;
+}
+
+/* ---- Nav ---- */
+.nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.nav__link {
+  display: block;
+  text-decoration: none;
+  padding: var(--space-1) var(--space-2);
+  color: inherit;
+}
+
+/* ---- Sections ---- */
+.section {
+  margin-bottom: var(--space-4);
+  scroll-margin-top: calc(var(--topbar-h) + var(--space-3));
+}
+
+.section__heading {
+  font-family: var(--font-head);
+  font-size: 1.9rem;
+  margin: 0 0 var(--space-3);
+}
+
+.section--hero {
+  text-align: center;
+}
+
+.hero__location {
+  margin: 0 0 var(--space-3);
+  color: var(--muted);
+}
+
+.hero__summary {
+  margin: 0 auto var(--space-3);
+  max-width: 62ch;
+}
+
+.hero__emailme {
+  margin: 0 0 var(--space-2);
+}
+
+.hero__skills-label {
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+/* ---- Links ---- */
+.links__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0;
+  margin: 0 0 var(--space-3);
+}
+
+.links__anchor {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  text-decoration: none;
+  color: var(--accent);
+}
+
+/* ---- Skill wall ---- */
+.skillwall {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: 0;
+  margin: 0;
+}
+
+.skillwall__chip {
+  padding: var(--space-1) var(--space-2);
+  font-size: 0.85rem;
+}
+
+/* ---- Entries (work + education) ---- */
+.entry-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.entry__head {
+  margin-bottom: var(--space-2);
+}
+
+.entry__title {
+  margin: 0;
+  font-size: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.entry__org {
+  font-weight: 700;
+}
+
+.entry__meta {
+  margin: var(--space-1) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.entry__bullets {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+/* ---- Life story ---- */
+.life__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 66ch;
+}
+
+.life__para {
+  margin: 0;
+}
+
+/* ---- Dividers ---- */
+.divider {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  overflow: hidden;
+  white-space: nowrap;
+  margin: var(--space-4) 0;
+}
+
+/* ---- Footer ---- */
+.footer {
+  text-align: center;
+  padding-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ---- Marquee structure (look/animation in retro.css) ---- */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  margin-bottom: var(--space-3);
+}
+
+.marquee__track {
+  display: inline-flex;
+  width: max-content;
+}
+
+.marquee__text {
+  padding-right: 3rem;
+}
+
+/* ---- Ornament containers ---- */
+.badgewall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+.webring__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
+  margin: var(--space-1) 0;
+}
+
+.guestbook__entries {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.hitcounter__digits {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.signin {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.poweredby {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+/* ---- Fixed status bar ---- */
+.statusbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--statusbar-h);
+  z-index: 100;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.statusbar__track {
+  display: inline-flex;
+  width: max-content;
+}
+
+.statusbar__track span {
+  padding-right: 4rem;
+}
+
+/* ---- Fixed decoration layers ---- */
+.sprites,
+.cursor-trail-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cursor-trail-layer {
+  z-index: 90;
+}
+
+.sprite {
+  position: absolute;
+}
+
+.cursor-trail-dot {
+  position: absolute;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform;
+}
+
+/* ---- Responsive: collapse the frame to a single column ---- */
+@media (max-width: 760px) {
+  .frame {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+    top: auto;
+  }
+  .siteheader__name {
+    font-size: 2.2rem;
+  }
+  .entry__meta {
+    flex-direction: column;
+  }
+}
