@@ -1,7 +1,7 @@
 // The "Powered by" / webmaster stack every 90s footer carried.
 const items = [
   'Powered by VITE',
-  'Hand-coded in VS CODE',
+  'AI babysitter-coded',
   'Optimized for NETSCAPE 4',
   'Hosted on a DREAM',
   '© 1996 RK Industries',
