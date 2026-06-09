@@ -109,7 +109,8 @@ body {
 
 .siteheader__tagline {
   margin: 0 auto var(--space-2);
-  max-width: 60ch;
+  /* No narrow cap: the tagline is short, so it stays on one line on wide
+     screens and only wraps when the viewport is genuinely too narrow. */
 }
 
 .siteheader__chrome {
