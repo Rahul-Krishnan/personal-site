@@ -1,6 +1,7 @@
 import { profile } from '../content';
 import { Links } from '../components/Links';
 import { SkillWall } from '../components/SkillWall';
+import { Sprite } from '../components/retro/Sprite';
 
 export function Hero() {
   return (
@@ -17,7 +18,7 @@ export function Hero() {
       <p className="hero__summary">{profile.summary}</p>
       <p className="hero__emailme">
         <span className="hero__envelope" aria-hidden="true">
-          ✉️
+          <Sprite name="envelope" size={18} />
         </span>{' '}
         Find me here:
       </p>

@@ -25,6 +25,12 @@
   padding-bottom: var(--space-4);
 }
 
+/* Cursor trail: subtle in the modern theme. */
+[data-theme='modern'] .cursor-trail-dot {
+  color: var(--accent);
+  font-size: 0.7rem;
+}
+
 /* Size the content column to a readable measure and center the sidebar+content
    pair, so margins are balanced instead of leaving dead space on the right. */
 [data-theme='modern'] .frame {

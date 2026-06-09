@@ -2,7 +2,7 @@
 // kind of window.status text 90s sites abused (real window.status is dead now).
 export function StatusBar() {
   const text =
-    "Document: Done.   ***   Welcome, surfer!   ***   Loading my 56k dreams...   ***   © 1996-∞ Rahul Krishnan   ***   No applets were harmed in the making of this page   ***   ";
+    "Document: Done.   ***   Connecting at 56k...   ***   You've got mail!   ***   AltaVista says hi   ***   © 1996-∞ Rahul Krishnan   ***   No applets were harmed in the making of this page   ***   ";
   return (
     <div className="statusbar" role="presentation">
       <div className="statusbar__track">

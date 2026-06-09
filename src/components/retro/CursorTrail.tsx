@@ -1,22 +1,16 @@
 import { useEffect } from 'react';
-import { useTheme } from '../../theme/useTheme';
 
 const TRAIL_GLYPH = '✦';
 const MAX_NODES = 18;
 
 // A sparkle trail that follows the pointer, the way every 90s homepage did via
-// a copy-pasted JavaScript snippet. Active only in the 90s theme, disabled
-// under prefers-reduced-motion, and fully cleaned up on unmount/theme change.
+// a copy-pasted JavaScript snippet. Runs in both themes (CSS colors it per
+// theme: loud in 90s, subtle in modern), disabled under prefers-reduced-motion,
+// and fully cleaned up on unmount.
 export function CursorTrail() {
-  const { theme } = useTheme();
-
   useEffect(() => {
-    if (theme !== '90s') return;
     if (typeof window === 'undefined') return;
-    const reduce = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches;
-    if (reduce) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const nodes: HTMLSpanElement[] = [];
     let idx = 0;
@@ -40,11 +34,11 @@ export function CursorTrail() {
       node.style.left = `${e.clientX}px`;
       node.style.top = `${e.clientY}px`;
       node.style.opacity = '1';
-      node.style.transform = `translate(-50%, -50%) scale(1)`;
+      node.style.transform = 'translate(-50%, -50%) scale(1)';
       // Fade on the next frame so the transition runs.
       requestAnimationFrame(() => {
         node.style.opacity = '0';
-        node.style.transform = `translate(-50%, -50%) scale(0.3)`;
+        node.style.transform = 'translate(-50%, -50%) scale(0.3)';
       });
     };
 
@@ -54,7 +48,7 @@ export function CursorTrail() {
       window.removeEventListener('pointermove', onMove);
       layer.remove();
     };
-  }, [theme]);
+  }, []);
 
   return null;
 }
