@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 
 const TRAIL_GLYPH = '✦';
-const MAX_NODES = 18;
+const MAX_NODES = 24;
 
 // A sparkle trail that follows the pointer, the way every 90s homepage did via
 // a copy-pasted JavaScript snippet. Runs in both themes (CSS colors it per
-// theme: loud in 90s, subtle in modern), disabled under prefers-reduced-motion,
-// and fully cleaned up on unmount.
+// theme: loud in 90s, subtle in modern), respects prefers-reduced-motion, and
+// is fully cleaned up on unmount.
 export function CursorTrail() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -33,13 +33,19 @@ export function CursorTrail() {
       idx = (idx + 1) % nodes.length;
       node.style.left = `${e.clientX}px`;
       node.style.top = `${e.clientY}px`;
-      node.style.opacity = '1';
-      node.style.transform = 'translate(-50%, -50%) scale(1)';
-      // Fade on the next frame so the transition runs.
-      requestAnimationFrame(() => {
-        node.style.opacity = '0';
-        node.style.transform = 'translate(-50%, -50%) scale(0.3)';
-      });
+      // Cancel any in-flight animation first: element.animate() with
+      // fill:forwards otherwise leaves finished Animation objects piling up on
+      // the node across the thousands of moves in a session.
+      node.getAnimations().forEach((animation) => animation.cancel());
+      // Web Animations API: appear instantly at full opacity, then fade and
+      // shrink. No forced reflow per move (unlike toggling a CSS transition).
+      node.animate(
+        [
+          { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
+          { opacity: 0, transform: 'translate(-50%, -50%) scale(0.3)' },
+        ],
+        { duration: 650, easing: 'ease', fill: 'forwards' },
+      );
     };
 
     window.addEventListener('pointermove', onMove);
