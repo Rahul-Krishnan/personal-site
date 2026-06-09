@@ -10,10 +10,15 @@ export interface ViewportState {
   scrollHeight: number;
 }
 
-// The activation line, as a fraction of viewport height from the top. A section
-// becomes active once its top scrolls above this line. 0.35 keeps the marker
-// where the old IntersectionObserver band sat (it used -30%/-60% margins).
-const ACTIVATION_LINE = 0.35;
+// The activation line: a fixed distance (px) below the top of the viewport, a
+// little under the fixed top bar. A section becomes active once its top scrolls
+// above this line. It is intentionally a FIXED pixel value, not a fraction of
+// viewport height: section heights are content-fixed, so a fractional line
+// drifts down past short sections (Education) on tall viewports and lights up
+// the *next* section instead. On very short viewports it is capped to a
+// fraction so it never sits past the usable area.
+const ACTIVATION_PX = 160;
+const ACTIVATION_MAX_FRACTION = 0.4;
 
 // Within this many pixels of the bottom we treat the page as fully scrolled.
 const BOTTOM_EPSILON = 2;
@@ -40,7 +45,10 @@ export function selectActiveSection(
     viewport.scrollHeight - BOTTOM_EPSILON;
   if (atBottom) return rects[rects.length - 1].id;
 
-  const line = viewport.innerHeight * ACTIVATION_LINE;
+  const line = Math.min(
+    ACTIVATION_PX,
+    viewport.innerHeight * ACTIVATION_MAX_FRACTION,
+  );
   let active = rects[0].id;
   for (const rect of rects) {
     if (rect.top <= line) active = rect.id;

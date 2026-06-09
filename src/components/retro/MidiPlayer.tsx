@@ -40,9 +40,13 @@ export function MidiPlayer() {
   const oscsRef = useRef<OscillatorNode[]>([]);
   const timerRef = useRef<number | null>(null);
   const playingRef = useRef(false);
+  // Audio-time at which the next loop should begin. Advancing this cursor by a
+  // fixed amount each loop keeps every boundary (including the first) identical,
+  // instead of re-deriving the start from wall-clock time.
+  const nextStartRef = useRef(0);
   // The scheduler lives in a ref so it can re-queue itself without a recursive
   // useCallback self-reference.
-  const scheduleRef = useRef<(startAt: number) => void>(() => {});
+  const scheduleRef = useRef<() => void>(() => {});
 
   useEffect(() => {
     const voice = (
@@ -72,7 +76,15 @@ export function MidiPlayer() {
       oscsRef.current.push(osc);
     };
 
-    scheduleRef.current = (startAt: number) => {
+    scheduleRef.current = () => {
+      const ctx = ctxRef.current;
+      if (!ctx) return;
+      // If we fell behind (e.g. the tab was backgrounded and setTimeout
+      // throttled), the cursor can lag the audio clock. Re-anchor it so notes
+      // are never scheduled in the past, which would play them all at once.
+      const LOOKAHEAD = 0.05;
+      const startAt = Math.max(nextStartRef.current, ctx.currentTime + LOOKAHEAD);
+
       // Melody (triangle, one per beat).
       MELODY.forEach((m, i) =>
         voice(m, startAt + i * QUARTER, QUARTER * 0.9, 'triangle', 0.18),
@@ -85,13 +97,18 @@ export function MidiPlayer() {
       BASS.forEach((m, bar) =>
         voice(m, startAt + bar * 4 * QUARTER, 4 * QUARTER * 0.98, 'sine', 0.25),
       );
-      // Re-queue the next loop after the music plus a short rest, so the song
-      // gets a breath before repeating instead of running straight into itself.
-      timerRef.current = window.setTimeout(() => {
-        if (playingRef.current && ctxRef.current) {
-          scheduleRef.current(ctxRef.current.currentTime);
-        }
-      }, (LOOP_SECONDS + REST_SECONDS) * 1000);
+
+      // Advance the cursor by exactly one loop (plus any rest) and queue the
+      // next pass a bit before it is due, so the boundary is consistent every
+      // time, including loop 1 -> loop 2.
+      nextStartRef.current = startAt + LOOP_SECONDS + REST_SECONDS;
+      const leadMs = (nextStartRef.current - ctx.currentTime) * 1000 - 80;
+      timerRef.current = window.setTimeout(
+        () => {
+          if (playingRef.current) scheduleRef.current();
+        },
+        Math.max(0, leadMs),
+      );
     };
   }, []);
 
@@ -138,7 +155,8 @@ export function MidiPlayer() {
 
     playingRef.current = true;
     setPlaying(true);
-    scheduleRef.current(ctx.currentTime + 0.08);
+    nextStartRef.current = ctx.currentTime + 0.12;
+    scheduleRef.current();
   }
 
   return (
@@ -150,7 +168,7 @@ export function MidiPlayer() {
         aria-pressed={playing}
         aria-label={playing ? 'Stop the MIDI song' : 'Play a looping MIDI song'}
       >
-        {playing ? '■ Stop MIDI (now playing…)' : '🎵 Play MIDI: nostalgia.mid'}
+        {playing ? '■ Stop MIDI (now playing…)' : '♪ Play MIDI: nostalgia.mid'}
       </button>
     </div>
   );

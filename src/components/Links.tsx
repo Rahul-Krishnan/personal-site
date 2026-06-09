@@ -8,23 +8,26 @@ export function Links() {
   return (
     <nav className="links" aria-label="Contact and profiles">
       <ul className="links__list">
-        {links.map((link) => (
-          <li key={link.label} className="links__item">
-            <a
-              className="links__anchor"
-              href={link.href}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-        <li className="links__item">
-          <a className="links__anchor" href={`mailto:${email}`}>
-            Email
-          </a>
-        </li>
+        {links.map((link) =>
+          link.kind === 'email' ? (
+            <li key={link.label} className="links__item">
+              <a className="links__anchor" href={`mailto:${email}`}>
+                {link.label}
+              </a>
+            </li>
+          ) : (
+            <li key={link.label} className="links__item">
+              <a
+                className="links__anchor"
+                href={link.href}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {link.label}
+              </a>
+            </li>
+          ),
+        )}
       </ul>
     </nav>
   );
