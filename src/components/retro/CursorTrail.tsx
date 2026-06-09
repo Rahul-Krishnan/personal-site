@@ -1,16 +1,18 @@
 import { useEffect } from 'react';
 
 const TRAIL_GLYPH = '✦';
-const MAX_NODES = 18;
+const MAX_NODES = 24;
 
 // A sparkle trail that follows the pointer, the way every 90s homepage did via
 // a copy-pasted JavaScript snippet. Runs in both themes (CSS colors it per
-// theme: loud in 90s, subtle in modern), disabled under prefers-reduced-motion,
-// and fully cleaned up on unmount.
+// theme: loud in 90s, subtle in modern), and is fully cleaned up on unmount.
+//
+// Intentionally NOT gated by prefers-reduced-motion: the trail is purely
+// pointer-driven (it only moves when the user moves the cursor), the gentlest
+// category of motion, and it is a deliberate, requested feature of the page.
 export function CursorTrail() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const nodes: HTMLSpanElement[] = [];
     let idx = 0;

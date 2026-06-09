@@ -39,8 +39,8 @@
 /* Cursor trail: loud in the 90s theme. */
 [data-theme='90s'] .cursor-trail-dot {
   color: #00ffff;
-  font-size: 1.15rem;
-  text-shadow: 0 0 5px #ff00ff, 0 0 9px #00ffff;
+  font-size: 1.5rem;
+  text-shadow: 0 0 6px #ff00ff, 0 0 12px #00ffff;
 }
 
 /* ---- Top bar: caution-stripe band + loud toggle ---- */

@@ -25,10 +25,10 @@
   padding-bottom: var(--space-4);
 }
 
-/* Cursor trail: subtle in the modern theme. */
+/* Cursor trail: present but understated in the modern theme. */
 [data-theme='modern'] .cursor-trail-dot {
   color: var(--accent);
-  font-size: 0.7rem;
+  font-size: 0.95rem;
 }
 
 /* Size the content column to a readable measure and center the sidebar+content
