@@ -138,7 +138,6 @@ export function Sprite({
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      role="img"
       aria-hidden="true"
       focusable="false"
     >
