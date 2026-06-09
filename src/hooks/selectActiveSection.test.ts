@@ -36,9 +36,9 @@ describe('selectActiveSection', () => {
     ).toBe('work');
   });
 
-  it('keeps the last-passed section when the line sits in a between-section gap', () => {
-    // The 35% line (≈286px) falls in the divider gap between education and path:
-    // education ends at 240, path starts at 360. No section contains the line.
+  it('keeps the last-passed section when the next section has not reached the line', () => {
+    // Education sits near the top (72) and path is well below (360); the active
+    // section stays education until path's top crosses the activation line.
     const rects = [
       { id: 'home', top: -2000, bottom: -1533 },
       { id: 'work', top: -1400, bottom: -100 },
@@ -47,6 +47,25 @@ describe('selectActiveSection', () => {
     ];
     expect(
       selectActiveSection(rects, { innerHeight: 816, scrollY: 1400, scrollHeight: 3165 }),
+    ).toBe('education');
+  });
+
+  // Regression: clicking a short section (Education) scrolls it to the top, but
+  // the next section's top could already be above a viewport-fraction line,
+  // stealing the highlight. A fixed line keeps the clicked section active.
+  it('activates a short clicked section, not the next one (Education-click regression)', () => {
+    const rects = [
+      { id: 'home', top: -1200, bottom: -733 },
+      { id: 'work', top: -600, bottom: -32 },
+      { id: 'education', top: 71, bottom: 239 },
+      { id: 'path', top: 271, bottom: 736 },
+    ];
+    expect(
+      selectActiveSection(rects, {
+        innerHeight: 816,
+        scrollY: 1200,
+        scrollHeight: 3165,
+      }),
     ).toBe('education');
   });
 
