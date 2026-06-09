@@ -3,9 +3,10 @@
 
 export type Link = {
   label: string;
-  href: string;
-  /** Plain-text fallback shown when JS assembles an obfuscated value. */
-  display?: string;
+  /** External URL. Omitted for the email entry, which is assembled at runtime. */
+  href?: string;
+  /** 'email' is special-cased so the address stays out of the static HTML. */
+  kind?: 'email';
 };
 
 export type JobEntry = {
@@ -42,10 +43,12 @@ export const profile: Profile = {
 // Email is assembled at runtime to keep it out of the raw HTML for scrapers.
 export const emailParts = { user: 'rk2211', domain: 'gmail.com' };
 
+// Order here is the display order. Email is special-cased (obfuscated) by the
+// Links component; GitHub sits last.
 export const links: Link[] = [
-  { label: 'GitHub', href: 'https://github.com/Rahul-Krishnan' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/rahul-krishnan' },
-  // Email link is rendered specially (obfuscated) by the Links component.
+  { label: 'Email', kind: 'email' },
+  { label: 'GitHub', href: 'https://github.com/Rahul-Krishnan' },
 ];
 
 export const jobs: JobEntry[] = [
@@ -55,10 +58,11 @@ export const jobs: JobEntry[] = [
     location: 'Menlo Park, CA',
     dates: 'Nov 2024 – Present',
     blurbs: [
-      'Early engineer on a greenfield platform for LLM post-training (RLHF), partnering with ML researchers on data quality across reasoning, coding, vision, and safety for Llama.',
+      'Early engineer on a greenfield platform for LLM post-training (RLHF), partnering with ML researchers on data annotation and evals for Llama model uplift across reasoning, coding, vision, and safety.',
       'Built agentic annotation-UI tooling that lets non-engineers spin up new projects on demand, removing engineering as a bottleneck.',
       'Shipped company-wide agent skills for developer productivity: cross-session analysis, context-contradiction detection, and agent/harness tuning.',
-      'Built a permissions framework decoupled from legacy systems via a dual-write strategy, and cut annotation batch setup from hours to minutes.',
+      'Built a permissions framework decoupled from legacy systems via a dual-write strategy.',
+      'Redesigned the batch and upload workflow, cutting annotation batch setup from hours to minutes.',
     ],
   },
   {
@@ -81,7 +85,7 @@ export const jobs: JobEntry[] = [
     blurbs: [
       'Built full-stack web apps, APIs, and infrastructure supporting iOS and Android products.',
       'Rebuilt authentication with microservices (OAuth via Cognito/Lambda), resolving a recurring outage pattern that had required hourly server restarts.',
-      'Refactored bulk data importers with SQS queuing: zero lost jobs and 50% faster imports.',
+      'Rebuilt bulk data imports onto an SQS queue, which stopped jobs from being dropped and roughly halved import time.',
     ],
   },
   {
@@ -90,7 +94,8 @@ export const jobs: JobEntry[] = [
     location: 'New York, NY',
     dates: 'Jun 2014 – Jun 2015',
     blurbs: [
-      'Helped build a new mortgage (Agency CMO) trading desk from inception, and traded and hedged derivative portfolios for institutional clients.',
+      'Helped build a new mortgage (Agency CMO) trading desk from inception.',
+      'Traded and hedged derivative portfolios with institutional clients.',
     ],
   },
   {
@@ -134,6 +139,6 @@ export const skills: string[] = [
 export const lifeStory: string[] = [
   'I grew up moving frequently as an expat, so I got comfortable with change and adaptation early. That mix of nervousness and excitement that comes with building a new life somewhere is something I have always enjoyed, and moving between cultures left me quick to embrace things that feel uncomfortable at first.',
   'Before tech, I spent about seven years trading derivatives on Wall Street. It taught me how complex systems behave under real pressure, and how to make decisions with incomplete information.',
-  "Then I taught myself to code and changed careers. I have since been the first engineer on three greenfield product teams, prototyping and pivoting from scratch at Intrepid Pursuits, on Alation's AI incubation team, and now at Meta.",
+  'Then I taught myself to code and changed careers. Since then I have been an early engineer on three greenfield product teams: two at Alation (its AI team and a ground-up rebuild of the product UI) and one at Meta, building and pivoting from scratch.',
   'Outside work, I play in a weekly pickleball league, travel whenever I can (57 countries so far, with the goal of all of them), explore the Bay Area with my wife and our dog, and make time for video games and trivia.',
 ];
