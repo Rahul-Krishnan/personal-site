@@ -31,20 +31,21 @@ export function CursorTrail() {
     const onMove = (e: PointerEvent) => {
       const node = nodes[idx];
       idx = (idx + 1) % nodes.length;
-      // Appear INSTANTLY at full opacity (transition off), then fade out. If we
-      // let the CSS transition animate the jump to opacity:1, that "appear" only
-      // gets ~1 frame before we set it back to 0, so the dot never brightens and
-      // the trail is invisible. Disable the transition for the appear, force a
-      // style commit, then restore the transition for the fade.
-      node.style.transition = 'none';
       node.style.left = `${e.clientX}px`;
       node.style.top = `${e.clientY}px`;
-      node.style.opacity = '1';
-      node.style.transform = 'translate(-50%, -50%) scale(1)';
-      void node.offsetWidth; // commit the "appear" state before transitioning out
-      node.style.transition = ''; // restore the CSS fade (opacity/transform)
-      node.style.opacity = '0';
-      node.style.transform = 'translate(-50%, -50%) scale(0.3)';
+      // Cancel any in-flight animation first: element.animate() with
+      // fill:forwards otherwise leaves finished Animation objects piling up on
+      // the node across the thousands of moves in a session.
+      node.getAnimations().forEach((animation) => animation.cancel());
+      // Web Animations API: appear instantly at full opacity, then fade and
+      // shrink. No forced reflow per move (unlike toggling a CSS transition).
+      node.animate(
+        [
+          { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
+          { opacity: 0, transform: 'translate(-50%, -50%) scale(0.3)' },
+        ],
+        { duration: 650, easing: 'ease', fill: 'forwards' },
+      );
     };
 
     window.addEventListener('pointermove', onMove);
