@@ -23,7 +23,8 @@ function App() {
     <>
       {/* Viewport-fixed decorations (hidden in modern theme via CSS). */}
       <Sprites />
-      <CursorTrail />
+      {/* Cursor trail is a 90s-only flourish; unmount it in modern. */}
+      {theme === '90s' && <CursorTrail />}
 
       {/* Prominent top bar with the theme toggle (both themes). */}
       <TopBar />
