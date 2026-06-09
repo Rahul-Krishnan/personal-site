@@ -6,7 +6,7 @@ import { Marquee } from './retro/Marquee';
 export function SiteHeader() {
   return (
     <header className="siteheader">
-      <Marquee text="WELCOME TO RAHUL'S CORNER OF THE WEB ::: NOW WITH 100% MORE TYPESCRIPT ::: PLEASE SIGN MY GUESTBOOK ::: THIS SITE IS UNDER ETERNAL CONSTRUCTION ::: TELL YOUR FRIENDS" />
+      <Marquee text="WELCOME TO RAHUL'S CORNER OF THE WEB ::: PLEASE SIGN MY GUESTBOOK ::: ADD ME ON ICQ AND mIRC ::: BOOKMARK IN NETSCAPE ::: THIS SITE IS UNDER ETERNAL CONSTRUCTION ::: TELL YOUR FRIENDS" />
       <h1 className="siteheader__name" data-text={profile.name}>
         {profile.name}
       </h1>

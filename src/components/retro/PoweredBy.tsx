@@ -2,7 +2,10 @@
 const items = [
   'Powered by VITE',
   'AI babysitter-coded',
+  'Webmaster: Rahul',
   'Optimized for NETSCAPE 4',
+  'Get Macromedia FLASH',
+  'Found on ALTAVISTA',
   'Hosted on a DREAM',
   '© 1996 RK Industries',
   'This site is Y2K compliant',

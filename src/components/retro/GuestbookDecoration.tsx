@@ -1,9 +1,12 @@
+import { UnderConstruction } from './UnderConstruction';
+
 // A guestbook that is pure decoration (no backend, no accounts, by design).
 // The "entries" are a static gag; the button does nothing but wink.
 const entries = [
   { name: 'NetscapeNavigator95', note: 'cool site!!! added 2 my bookmarks' },
   { name: 'xX_dialup_Xx', note: 'took 4 ever to load on my 56k but worth it' },
-  { name: 'webmaster', note: 'great use of <blink>. a bold choice.' },
+  { name: 'AskJeeves_Fan', note: 'i found this on AltaVista. webmaster rules' },
+  { name: 'mIRC_lurker', note: 'a/s/l? jk. great <blink> usage, a bold choice' },
 ];
 
 export function GuestbookDecoration() {
@@ -21,9 +24,7 @@ export function GuestbookDecoration() {
         ))}
       </ul>
       <span className="guestbook__button">[ Sign it! ]</span>
-      <span className="guestbook__disclaimer">
-        (purely decorative, like everything good about the old web)
-      </span>
+      <UnderConstruction />
     </div>
   );
 }

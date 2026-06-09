@@ -4,10 +4,14 @@ const badges = [
   { text: 'Best viewed in\nNETSCAPE', kind: 'netscape' },
   { text: 'Made with\nNOTEPAD', kind: 'notepad' },
   { text: 'HTML 3.2\nCERTIFIED', kind: 'html' },
+  { text: 'GET\nMACROMEDIA FLASH', kind: 'flash' },
+  { text: 'CHAT ME ON\nIRC', kind: 'irc' },
+  { text: 'WEBMASTER\nAPPROVED', kind: 'webmaster' },
+  { text: 'INDEXED BY\nALTAVISTA', kind: 'altavista' },
   { text: 'Y2K\nREADY', kind: 'y2k' },
-  { text: 'GET\nNETSCAPE NOW', kind: 'getnav' },
+  { text: 'NEEDS\nREALPLAYER', kind: 'real' },
+  { text: 'SAVE THE\nRAINFOREST', kind: 'rainforest' },
   { text: '800x600\nor bust', kind: 'res' },
-  { text: 'NO FRAMES\nNO PROBLEM', kind: 'frames' },
   { text: 'POWERED BY\nVITE + REACT', kind: 'vite' },
 ];
 
