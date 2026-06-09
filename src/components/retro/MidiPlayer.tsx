@@ -164,7 +164,7 @@ export function MidiPlayer() {
         aria-pressed={playing}
         aria-label={playing ? 'Stop the MIDI song' : 'Play a looping MIDI song'}
       >
-        {playing ? '■ Stop MIDI (now playing…)' : '🎵 Play MIDI: nostalgia.mid'}
+        {playing ? '■ Stop MIDI (now playing…)' : '♪ Play MIDI: nostalgia.mid'}
       </button>
     </div>
   );
