@@ -79,7 +79,11 @@ export function MidiPlayer() {
     scheduleRef.current = () => {
       const ctx = ctxRef.current;
       if (!ctx) return;
-      const startAt = nextStartRef.current;
+      // If we fell behind (e.g. the tab was backgrounded and setTimeout
+      // throttled), the cursor can lag the audio clock. Re-anchor it so notes
+      // are never scheduled in the past, which would play them all at once.
+      const LOOKAHEAD = 0.05;
+      const startAt = Math.max(nextStartRef.current, ctx.currentTime + LOOKAHEAD);
 
       // Melody (triangle, one per beat).
       MELODY.forEach((m, i) =>
