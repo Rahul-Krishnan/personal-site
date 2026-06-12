@@ -94,8 +94,7 @@ export const jobs: JobEntry[] = [
     location: 'New York, NY',
     dates: 'Jun 2014 – Jun 2015',
     blurbs: [
-      'Helped build a new mortgage (Agency CMO) trading desk from inception.',
-      'Traded and hedged derivative portfolios with institutional clients.',
+      'Helped build a new mortgage trading desk from inception.',
     ],
   },
   {
@@ -114,7 +113,6 @@ export const jobs: JobEntry[] = [
     dates: 'Jul 2008 – Jun 2012',
     blurbs: [
       'Traded and hedged mortgage (MBS) derivatives as a market maker.',
-      'Part of the syndicate that launched the Synthetic IO (IOS).',
     ],
   },
 ];
