@@ -44,11 +44,10 @@ export const profile: Profile = {
 export const emailParts = { user: 'rk2211', domain: 'gmail.com' };
 
 // Order here is the display order. Email is special-cased (obfuscated) by the
-// Links component; GitHub sits last.
+// Links component.
 export const links: Link[] = [
   { label: 'LinkedIn', href: 'https://linkedin.com/in/rahul-krishnan' },
   { label: 'Email', kind: 'email' },
-  { label: 'GitHub', href: 'https://github.com/Rahul-Krishnan' },
 ];
 
 export const jobs: JobEntry[] = [
