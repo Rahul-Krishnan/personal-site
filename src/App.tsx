@@ -14,6 +14,7 @@ import { UnderConstruction } from './components/retro/UnderConstruction';
 import { GuestbookDecoration } from './components/retro/GuestbookDecoration';
 import { PoweredBy } from './components/retro/PoweredBy';
 import { StatusBar } from './components/retro/StatusBar';
+import { Analytics } from "@vercel/analytics/next";
 
 function App() {
   const { theme } = useTheme();
@@ -58,6 +59,7 @@ function App() {
 
         <StatusBar />
       </div>
+      <Analytics />
     </>
   );
 }
