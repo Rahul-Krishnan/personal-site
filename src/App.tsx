@@ -27,6 +27,8 @@ function App() {
       <Sprites />
       {/* Cursor trail is a 90s-only flourish; unmount it in modern. */}
       {theme === '90s' && <CursorTrail />}
+      {/* Dancing baby: fixed bottom-right, 90s-only so the GIF never loads in modern. */}
+      {theme === '90s' && <DancingBaby />}
 
       {/* Prominent top bar with the theme toggle (both themes). */}
       <TopBar />
@@ -50,8 +52,6 @@ function App() {
             <footer className="footer">
               <UnderConstruction />
               <GuestbookDecoration />
-              {/* 90s-only easter egg; unmount in modern so the GIF never loads. */}
-              {theme === '90s' && <DancingBaby />}
               <PoweredBy />
               <p className="footer__sig">
                 &copy; {new Date().getFullYear()} Rahul Krishnan &middot; San Francisco
