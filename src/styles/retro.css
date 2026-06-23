@@ -507,3 +507,31 @@
     75% { transform: translateX(2px); }
   }
 }
+
+/* The Dancing Baby — a footer shrine flourish, 90s theme only. */
+[data-theme='90s'] .dancing-baby {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-3) 0;
+}
+[data-theme='90s'] .dancing-baby__gif {
+  width: 109px;
+  height: 140px;
+  /* Preserve the chunky 1996 render if the browser ever scales it. */
+  image-rendering: pixelated;
+}
+[data-theme='90s'] .dancing-baby__caption {
+  color: #00ffff;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+/* A GIF animates on its own and can't be paused from CSS, so honor the
+   reduced-motion request by removing it entirely. */
+@media (prefers-reduced-motion: reduce) {
+  [data-theme='90s'] .dancing-baby {
+    display: none;
+  }
+}

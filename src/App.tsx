@@ -12,6 +12,7 @@ import { CursorTrail } from './components/retro/CursorTrail';
 import { Divider } from './components/retro/Divider';
 import { UnderConstruction } from './components/retro/UnderConstruction';
 import { GuestbookDecoration } from './components/retro/GuestbookDecoration';
+import { DancingBaby } from './components/retro/DancingBaby';
 import { PoweredBy } from './components/retro/PoweredBy';
 import { StatusBar } from './components/retro/StatusBar';
 import { Analytics } from '@vercel/analytics/react';
@@ -49,6 +50,8 @@ function App() {
             <footer className="footer">
               <UnderConstruction />
               <GuestbookDecoration />
+              {/* 90s-only easter egg; unmount in modern so the GIF never loads. */}
+              {theme === '90s' && <DancingBaby />}
               <PoweredBy />
               <p className="footer__sig">
                 &copy; {new Date().getFullYear()} Rahul Krishnan &middot; San Francisco
