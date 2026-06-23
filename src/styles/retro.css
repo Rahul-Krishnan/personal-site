@@ -507,3 +507,27 @@
     75% { transform: translateX(2px); }
   }
 }
+
+/* The Dancing Baby — fixed to the bottom-right, sitting just above the
+   status bar. 90s theme only; pointer-events off so it never blocks clicks. */
+[data-theme='90s'] .dancing-baby {
+  position: fixed;
+  right: var(--space-3);
+  bottom: calc(var(--statusbar-h) + var(--space-3));
+  z-index: 50;
+  pointer-events: none;
+}
+[data-theme='90s'] .dancing-baby__gif {
+  display: block;
+  width: 109px;
+  height: 140px;
+  /* Preserve the chunky 1996 render if the browser ever scales it. */
+  image-rendering: pixelated;
+}
+/* A GIF animates on its own and can't be paused from CSS, so honor the
+   reduced-motion request by removing it entirely. */
+@media (prefers-reduced-motion: reduce) {
+  [data-theme='90s'] .dancing-baby {
+    display: none;
+  }
+}

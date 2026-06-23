@@ -12,6 +12,7 @@ import { CursorTrail } from './components/retro/CursorTrail';
 import { Divider } from './components/retro/Divider';
 import { UnderConstruction } from './components/retro/UnderConstruction';
 import { GuestbookDecoration } from './components/retro/GuestbookDecoration';
+import { DancingBaby } from './components/retro/DancingBaby';
 import { PoweredBy } from './components/retro/PoweredBy';
 import { StatusBar } from './components/retro/StatusBar';
 import { Analytics } from '@vercel/analytics/react';
@@ -26,6 +27,8 @@ function App() {
       <Sprites />
       {/* Cursor trail is a 90s-only flourish; unmount it in modern. */}
       {theme === '90s' && <CursorTrail />}
+      {/* Dancing baby: fixed bottom-right, 90s-only so the GIF never loads in modern. */}
+      {theme === '90s' && <DancingBaby />}
 
       {/* Prominent top bar with the theme toggle (both themes). */}
       <TopBar />
