@@ -77,7 +77,7 @@ export const jobs: JobEntry[] = [
     ],
   },
   {
-    company: 'Intrepid Pursuits',
+    company: 'Intrepid Pursuits (acquired by Accenture)',
     title: 'Software Engineer',
     location: 'Cambridge, MA',
     dates: 'Sep 2017 – Apr 2020',
