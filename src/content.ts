@@ -134,8 +134,8 @@ export const skills: string[] = [
 
 // The trailing "how I got here" narrative.
 export const lifeStory: string[] = [
-  'I grew up moving frequently as an expat, so I got comfortable with change and adaptation early. That mix of nervousness and excitement that comes with building a new life somewhere is something I have always enjoyed, and moving between cultures left me quick to embrace things that feel uncomfortable at first.',
+  'I grew up moving around a lot as an expat, so change and adaptation felt normal to me early on. I\'ve always liked the mix of nervousness and excitement that comes with building a new life somewhere, and bouncing between cultures made me quick to embrace things that feel uncomfortable at first.',
   'Before tech, I spent about seven years trading derivatives on Wall Street. It taught me how complex systems behave under real pressure, and how to make decisions with incomplete information.',
-  'Then I taught myself to code and changed careers. Since then I have been an early engineer on three greenfield product teams, building and pivoting from scratch.',
-  'Outside work, I play in a weekly pickleball league, travel whenever I can (57 countries so far, with the goal of all of them), explore the Bay Area with my wife and our dog, and make time for video games and trivia.',
+  'Then I taught myself to code and switched careers. Since then I\'ve been an early engineer on three greenfield product teams, building things from scratch and pivoting when they didn\'t work.',
+  'Outside work, I play in a weekly pickleball league, travel whenever I can (57 countries so far, and I want to get to all of them), explore the Bay Area with my wife and our dog, and make time for video games and trivia.',
 ];
