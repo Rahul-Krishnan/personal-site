@@ -37,7 +37,7 @@ export const profile: Profile = {
   location: 'San Francisco, CA',
   tagline: 'Software Engineer · AI-driven products & platforms',
   summary:
-    "I'm a Software Engineer in the SF Bay Area who works on AI-driven products and platforms. I focus on turning unclear problems into systems that are reliable, scalable, and easy for people to use. I've worked on both new products and large existing systems, often in fast-moving or ambiguous environments.",
+    "I'm a Software Engineer and former Fixed Income Trader in the SF Bay Area who works on AI-driven products and platforms. I focus on turning unclear problems into systems that are reliable, scalable, and easy for people to use. I've worked on both new products and large existing systems, often in fast-moving or ambiguous environments.",
 };
 
 // Email is assembled at runtime to keep it out of the raw HTML for scrapers.
@@ -57,7 +57,7 @@ export const jobs: JobEntry[] = [
     location: 'Menlo Park, CA',
     dates: 'Nov 2024 – Present',
     blurbs: [
-      'Early engineer on a greenfield platform for LLM post-training (RLHF), partnering with ML researchers on data annotation and evals for Llama model training across reasoning, coding, vision, and safety.',
+      'Early engineer on a greenfield platform for LLM post-training (RLHF) within the AI Solutions & Automation org, partnering with ML researchers on data annotation and evals for Llama model training across reasoning, coding, vision, and safety.',
       'Built agentic annotation-UI tooling that lets non-engineers spin up new projects on demand, removing engineering as a bottleneck.',
       'Shipped company-wide agent skills for developer productivity: cross-session analysis, context-contradiction detection, and agent/harness tuning.',
       'Built a permissions framework decoupled from legacy systems via a dual-write strategy.',
@@ -70,7 +70,7 @@ export const jobs: JobEntry[] = [
     location: 'Redwood City, CA',
     dates: 'Apr 2020 – Nov 2024',
     blurbs: [
-      'Built GenAI/LLM features (GPT, Claude) for data-catalog automation with streaming responses, plus XGBoost + Airflow pipelines for object suggestions.',
+      'Built GenAI/LLM features to automate data catalog population and governance, working with ML engineers on training and inference pipelines.',
       'Cut critical ML runtime by 75% and memory by 90% on large datasets through batching and code-efficiency work.',
       'Resolved Elasticsearch bottlenecks and split large requests into component-driven ones, reducing search latency by 25%.',
       'Shipped a permissioned public Search API so customers could integrate Alation search into internal tools and Slack.',
@@ -134,8 +134,8 @@ export const skills: string[] = [
 
 // The trailing "how I got here" narrative.
 export const lifeStory: string[] = [
-  'I grew up moving frequently as an expat, so I got comfortable with change and adaptation early. That mix of nervousness and excitement that comes with building a new life somewhere is something I have always enjoyed, and moving between cultures left me quick to embrace things that feel uncomfortable at first.',
+  'I grew up moving around a lot as an expat, so change and adaptation felt normal to me early on. I\'ve always liked the mix of nervousness and excitement that comes with building a new life somewhere, and bouncing between cultures made me quick to embrace things that feel uncomfortable at first.',
   'Before tech, I spent about seven years trading derivatives on Wall Street. It taught me how complex systems behave under real pressure, and how to make decisions with incomplete information.',
-  'Then I taught myself to code and changed careers. Since then I have been an early engineer on three greenfield product teams, building and pivoting from scratch.',
-  'Outside work, I play in a weekly pickleball league, travel whenever I can (57 countries so far, with the goal of all of them), explore the Bay Area with my wife and our dog, and make time for video games and trivia.',
+  'Then I taught myself to code and switched careers. Since then I\'ve been an early engineer on three greenfield product teams, building things from scratch and pivoting when they didn\'t work.',
+  'Outside work, I play in a weekly pickleball league, travel whenever I can (57 countries so far, and I want to get to all of them), explore the Bay Area with my wife and our dog, and make time for video games and trivia.',
 ];
