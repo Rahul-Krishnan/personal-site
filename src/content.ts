@@ -37,7 +37,7 @@ export const profile: Profile = {
   location: 'San Francisco, CA',
   tagline: 'Software Engineer · AI-driven products & platforms',
   summary:
-    "I'm a Software Engineer in the SF Bay Area who works on AI-driven products and platforms. I focus on turning unclear problems into systems that are reliable, scalable, and easy for people to use. I've worked on both new products and large existing systems, often in fast-moving or ambiguous environments.",
+    "I'm a Software Engineer and former Fixed Income Trader in the SF Bay Area who works on AI-driven products and platforms. I focus on turning unclear problems into systems that are reliable, scalable, and easy for people to use. I've worked on both new products and large existing systems, often in fast-moving or ambiguous environments.",
 };
 
 // Email is assembled at runtime to keep it out of the raw HTML for scrapers.
@@ -57,7 +57,7 @@ export const jobs: JobEntry[] = [
     location: 'Menlo Park, CA',
     dates: 'Nov 2024 – Present',
     blurbs: [
-      'Early engineer on a greenfield platform for LLM post-training (RLHF), partnering with ML researchers on data annotation and evals for Llama model training across reasoning, coding, vision, and safety.',
+      'Early engineer on a greenfield platform for LLM post-training (RLHF) within the AI Solutions & Automation org, partnering with ML researchers on data annotation and evals for Llama model training across reasoning, coding, vision, and safety.',
       'Built agentic annotation-UI tooling that lets non-engineers spin up new projects on demand, removing engineering as a bottleneck.',
       'Shipped company-wide agent skills for developer productivity: cross-session analysis, context-contradiction detection, and agent/harness tuning.',
       'Built a permissions framework decoupled from legacy systems via a dual-write strategy.',
@@ -70,7 +70,7 @@ export const jobs: JobEntry[] = [
     location: 'Redwood City, CA',
     dates: 'Apr 2020 – Nov 2024',
     blurbs: [
-      'Built GenAI/LLM features (GPT, Claude) for data-catalog automation with streaming responses, plus XGBoost + Airflow pipelines for object suggestions.',
+      'Built GenAI/LLM features to automate data catalog population and governance, working with ML engineers on training and inference pipelines.',
       'Cut critical ML runtime by 75% and memory by 90% on large datasets through batching and code-efficiency work.',
       'Resolved Elasticsearch bottlenecks and split large requests into component-driven ones, reducing search latency by 25%.',
       'Shipped a permissioned public Search API so customers could integrate Alation search into internal tools and Slack.',
