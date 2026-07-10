@@ -52,10 +52,19 @@ export const links: Link[] = [
 
 export const jobs: JobEntry[] = [
   {
+    company: 'Name TBD',
+    title: 'Founder, CEO',
+    location: 'San Francisco, CA',
+    dates: 'Jul 2026 – Present',
+    blurbs: [
+      'Working on something new',
+    ],
+  },
+  {
     company: 'Meta',
     title: 'Senior Software Engineer',
     location: 'Menlo Park, CA',
-    dates: 'Nov 2024 – Present',
+    dates: 'Nov 2024 – Jun 2026',
     blurbs: [
       'Early engineer on a greenfield platform for LLM post-training (RLHF) within the AI Solutions & Automation org, partnering with ML researchers on data annotation and evals for Llama model training across reasoning, coding, vision, and safety.',
       'Built agentic annotation-UI tooling that lets non-engineers spin up new projects on demand, removing engineering as a bottleneck.',
