@@ -52,13 +52,11 @@ export const links: Link[] = [
 
 export const jobs: JobEntry[] = [
   {
-    company: 'Name TBD',
+    company: 'Stealth',
     title: 'Founder, CEO',
     location: 'San Francisco, CA',
     dates: 'Jul 2026 – Present',
-    blurbs: [
-      'Working on something new',
-    ],
+    blurbs: [],
   },
   {
     company: 'Meta',
