@@ -13,13 +13,15 @@ export function JobEntry({ job }: { job: JobEntryData }) {
           <span className="entry__dates">{job.dates}</span>
         </p>
       </header>
-      <ul className="entry__bullets">
-        {job.blurbs.map((blurb, i) => (
-          <li key={i} className="entry__bullet">
-            {blurb}
-          </li>
-        ))}
-      </ul>
+      {job.blurbs.length > 0 && (
+        <ul className="entry__bullets">
+          {job.blurbs.map((blurb, i) => (
+            <li key={i} className="entry__bullet">
+              {blurb}
+            </li>
+          ))}
+        </ul>
+      )}
     </article>
   );
 }
