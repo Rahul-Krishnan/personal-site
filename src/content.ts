@@ -52,8 +52,8 @@ export const links: Link[] = [
 
 export const jobs: JobEntry[] = [
   {
-    company: 'BGH',
-    title: 'Applied AI',
+    company: 'BGH Applied AI',
+    title: 'Founder, CEO',
     location: 'San Francisco, CA',
     dates: 'Jun 2026 – Present',
     blurbs: [
