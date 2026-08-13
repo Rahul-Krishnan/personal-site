@@ -52,11 +52,14 @@ export const links: Link[] = [
 
 export const jobs: JobEntry[] = [
   {
-    company: 'Stealth',
+    company: 'BGH Applied AI',
     title: 'Founder, CEO',
     location: 'San Francisco, CA',
-    dates: 'Jul 2026 – Present',
-    blurbs: [],
+    dates: 'Jun 2026 – Present',
+    blurbs: [
+      'Building the Operating System for Structured Finance asset managers.',
+      'Embedded engineering for trading workflow automation, AI-supported pricing strategies, and harness tuning.',
+    ],
   },
   {
     company: 'Meta',
