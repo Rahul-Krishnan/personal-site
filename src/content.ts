@@ -58,7 +58,7 @@ export const jobs: JobEntry[] = [
     dates: 'Jun 2026 – Present',
     blurbs: [
       'Embedded with a hedge fund client to automate their operations, from accounting close to marketing production.',
-      'Built the connectors, custom skills, and hooks that keep the client\'s AI agent workflows reliable.',
+      'Hardened the client\'s agent tooling: Cowork skills capturing their connector patterns and gotchas, read-only hooks on Claude Code and Codex, and interim network-drive access ahead of a recommended cloud migration.',
       'Trained the client\'s non-technical teams through group and one-on-one sessions to build, run, and adapt their own workflows on Claude Cowork and ChatGPT Work.',
     ],
   },
