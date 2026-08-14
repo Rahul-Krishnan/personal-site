@@ -59,7 +59,7 @@ export const jobs: JobEntry[] = [
     blurbs: [
       'Embedded with a hedge fund client to automate their operations, from accounting close to marketing production.',
       'Built the connectors, custom skills, and hooks that keep the client\'s AI agent workflows reliable.',
-      'Trained the client\'s non-technical teams to build and run their own workflows on Claude Cowork and ChatGPT Work.',
+      'Trained the client\'s non-technical teams through group and one-on-one sessions to build, run, and adapt their own workflows on Claude Cowork and ChatGPT Work.',
     ],
   },
   {
