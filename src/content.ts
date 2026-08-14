@@ -57,8 +57,9 @@ export const jobs: JobEntry[] = [
     location: 'San Francisco, CA',
     dates: 'Jun 2026 – Present',
     blurbs: [
-      'Building the Operating System for Structured Finance asset managers.',
-      'Embedded engineering for trading workflow automation, AI-supported pricing strategies, and harness tuning.',
+      'Embedded with a hedge fund client to automate their operations, from accounting close to marketing production.',
+      'Built the connectors, custom skills, and hooks that keep the client\'s AI agent workflows reliable.',
+      'Trained the client\'s non-technical teams to build and run their own workflows on Claude Cowork and ChatGPT Work.',
     ],
   },
   {
@@ -70,6 +71,7 @@ export const jobs: JobEntry[] = [
       'Early engineer on a greenfield platform for LLM post-training (RLHF) within the AI Solutions & Automation org, partnering with ML researchers on data annotation and evals for Llama model training across reasoning, coding, vision, and safety.',
       'Built agentic annotation-UI tooling that lets non-engineers spin up new projects on demand, removing engineering as a bottleneck.',
       'Shipped company-wide agent skills for developer productivity: cross-session analysis, context-contradiction detection, and agent/harness tuning.',
+      'Led biweekly cross-org knowledge-sharing sessions and product demos for up to 50 engineers, researchers, data scientists, and leadership on scalable AI annotation tooling.',
       'Built a permissions framework decoupled from legacy systems via a dual-write strategy.',
       'Redesigned the batch and upload workflow, cutting annotation batch setup from hours to minutes.',
     ],
