@@ -57,9 +57,9 @@ export const jobs: JobEntry[] = [
     location: 'San Francisco, CA',
     dates: 'Jun 2026 – Present',
     blurbs: [
-      'Building agentic automation for Structured Finance asset managers.',
-      'Embedded with a hedge fund client to automate operations from accounting close to marketing production, wiring up the connectors and building the custom skills and guardrail hooks that keep the agents reliable.',
-      'Ran group and individual sessions training the client\'s non-technical teams to build and run their own AI workflows on Claude Cowork and ChatGPT Work.',
+      'Embedded with a hedge fund client to automate their operations, from accounting close to marketing production.',
+      'Built the connectors, custom skills, and hooks that keep the client\'s AI agent workflows reliable.',
+      'Trained the client\'s non-technical teams to build and run their own workflows on Claude Cowork and ChatGPT Work.',
     ],
   },
   {
